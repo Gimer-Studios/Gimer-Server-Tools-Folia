@@ -1,5 +1,5 @@
 name: GimerServerTools
-version: '2.3'
+version: '2.2'
 main: me.liam.operator_tools.OperatorTools
 api-version: '1.20'
 folia-supported: true
@@ -45,6 +45,8 @@ commands:
     description: Allows players to check other players playtime and when they last played.
   killallhostile:
     description: Allows operators to kill all hostile mobs in the world.
+  shutdown:
+    description: Allows operators to shutdown the server without going into the server terminal.
 
 permissions:
   operator_tools.commands:
