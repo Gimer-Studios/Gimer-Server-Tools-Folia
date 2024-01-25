@@ -44,8 +44,7 @@ public class OperatorTools extends JavaPlugin implements CommandExecutor, Listen
     private long serverStartTime;
 
     private ChatLogger chatLogger;
-    private String dynamicMOTD = "Welcome to our server!";
-    private File motdFile;
+
 
 
     private static boolean isFolia() {
@@ -88,8 +87,6 @@ public class OperatorTools extends JavaPlugin implements CommandExecutor, Listen
         new Metrics(this, pluginId);
         serverStartTime = System.currentTimeMillis();
         getLogger().info("Thanks for using Gimer Server Tools Folia BETA!");
-        loadDynamicMOTD();
-        setDynamicMOTD(dynamicMOTD);
         getCommand("c").setExecutor(this);
         getCommand("s").setExecutor(this);
         getCommand("a").setExecutor(this);
@@ -327,20 +324,9 @@ public class OperatorTools extends JavaPlugin implements CommandExecutor, Listen
         });
     }
 
-    private void loadConfig() {
-        saveDefaultConfig();
-        config = getConfig();
-        dynamicMOTD = config.getString("dynamic_motd", "Welcome to our server!");
-    }
 
 
-    private void saveDynamicMOTD() {
-        try {
-            Files.write(motdFile.toPath(), dynamicMOTD.getBytes(StandardCharsets.UTF_8));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
     private void kickNonOpPlayers() {
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             if (!onlinePlayer.isOp()) {
@@ -351,29 +337,6 @@ public class OperatorTools extends JavaPlugin implements CommandExecutor, Listen
 
     }
 
-    public void setDynamicMOTD(String newMOTD) {
-        dynamicMOTD = newMOTD;
-
-        Bukkit.getScheduler().runTask(this, () -> {
-            Bukkit.getServer().setMotd(ChatColor.translateAlternateColorCodes('&', dynamicMOTD));
-            saveDynamicMOTD();
-        });
-    }
-
-
-    private void loadDynamicMOTD() {
-        motdFile = new File(getDataFolder(), "motd.txt");
-
-        try {
-            if (!motdFile.exists()) {
-                motdFile.createNewFile();
-            }
-
-            dynamicMOTD = new String(Files.readAllBytes(motdFile.toPath()), StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
 
     private void displayServerInfo(CommandSender sender) {
