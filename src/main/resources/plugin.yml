@@ -1,0 +1,61 @@
+name: GimerServerTools
+version: '2.3'
+main: me.liam.operator_tools.OperatorTools
+api-version: '1.20'
+folia-supported: true
+
+commands:
+  c:
+    description: Switch to Creative mode
+  s:
+    description: Switch to Survival mode
+  a:
+    description: Switch to Adventure mode
+  sp:
+    description: Switch to Spectator mode
+  maintenance:
+    description: Sends a Message to warn players that the server is going down for maintenance soon.
+  maintenancekick:
+    description: Kicks all Players that are not operators and stops them from joining.
+  backup:
+    description: Backs up the world.
+  unmaintenance:
+    description: Lets all non op kicked players rejoin after maintenance is completed. YOU MUST run this command so players can join back.
+  serverinfo:
+    description: Gives info about the server version, Player Count, etc.
+  playerstats:
+    description: Gives info about a player. (WIP) currently very limited. Some things will NOT WORK.
+  gcoords:
+    description: Operators can use this command to get a players coordinates.
+  scoords:
+    description: Any player can use this command to send their coordinates quickly to another player.
+  spectate:
+    description: Lets any operator Spectate a player(BETA).
+  mute:
+    description: Allows operators to mute players.
+  unmute:
+    description: Allows operators to unmute a muted player.
+  invsee:
+    description: Allows operators to look at players inventory. This also allows them to interact with their inventory.
+  broadcast:
+    description: Allows operators to send a broadcast message which will play a ping sound and the message will be a different color to differentiate itself from other messages.
+  head:
+    description: Allows operators to get a players head.
+  playertime:
+    description: Allows players to check other players playtime and when they last played.
+  killallhostile:
+    description: Allows operators to kill all hostile mobs in the world.
+
+permissions:
+  operator_tools.commands:
+    description: Access to all OperatorTools commands
+    default: op
+  operator_tools.maintenance:
+    description: Access to maintenance commands
+    default: op
+  operator_tools.invsee:
+    description: Access to inventory viewing. This also allows them to interact with their inventory.
+    default: op
+  operator_tools.head:
+    description: Access to /head command.
+    default: op
