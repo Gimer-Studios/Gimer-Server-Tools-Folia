@@ -108,6 +108,7 @@ public class OperatorTools extends JavaPlugin implements CommandExecutor, Listen
         getCommand("playertime").setExecutor(new PlaytimeCommand());
         getCommand("killallhostile").setExecutor(new KillAllHostileCommand(this));
         getCommand("shutdown").setExecutor(new ManagementCommands());
+        getServer().getPluginManager().registerEvents(new JoinMessages(), this);
         String version = Bukkit.getVersion();
         boolean isFolia = version.contains("Folia");
         chatLogger = new ChatLogger(this);
